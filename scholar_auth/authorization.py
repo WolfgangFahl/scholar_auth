@@ -22,6 +22,16 @@ class UserRights:
     name: str
     rights: str
 
+    def get_rights(self) -> list[str]:
+        """
+        get the single rights of this user
+
+        Returns:
+            list[str]: the rights, separated by blanks or commas in the rights string
+        """
+        rights_list = self.rights.replace(",", " ").split()
+        return rights_list
+
 
 @lod_storable
 class Authorization:
@@ -76,5 +86,5 @@ class Authorization:
         ok = False
         user_right = self.user_rights.get(orcid)
         if user_right is not None:
-            ok = rights is None or rights in user_right.rights
+            ok = rights is None or rights in user_right.get_rights()
         return ok

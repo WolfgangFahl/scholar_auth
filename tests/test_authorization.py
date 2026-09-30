@@ -36,6 +36,18 @@ class TestAuthorization(Basetest):
         self.assertFalse(auth_loaded.check_right_by_orcid("0000-0002-1825-0097", "llm"))
         self.assertFalse(auth_loaded.check_right_by_orcid("0000-0002-1825-0097"))
 
+    def test_whole_word_rights(self):
+        """
+        test that a right only matches as a whole word of the rights string
+        """
+        orcid = "0000-0001-2345-6789"
+        for rights in ["wikidatasync log", "wikidatasync,log", "wikidatasync, log"]:
+            auth = Authorization(user_rights={orcid: UserRights(name="John Doe", rights=rights)})
+            self.assertTrue(auth.check_right_by_orcid(orcid, "wikidatasync"), rights)
+            self.assertTrue(auth.check_right_by_orcid(orcid, "log"), rights)
+            self.assertFalse(auth.check_right_by_orcid(orcid, "sync"), rights)
+            self.assertFalse(auth.check_right_by_orcid(orcid, "wikidata"), rights)
+
     def test_missing_file(self):
         """
         test that a missing user rights file grants no rights

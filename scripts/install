@@ -1,3 +1,4 @@
 #!/bin/bash
 # WF 2023-11-06
-pip install .
+# the nicegui extra is needed to test scholar_auth.nicegui_login
+pip install ".[nicegui]"

@@ -53,6 +53,11 @@ Source = "https://github.com/WolfgangFahl/scholar_auth"
 test = [
   "green",
 ]
+# ORCID login for nicegui applications: scholar_auth.nicegui_login
+nicegui = [
+  # https://pypi.org/project/nicegui/
+  "nicegui",
+]
 
 [tool.hatch.build.targets.wheel]
 only-include = ["scholar_auth"]
@@ -62,3 +67,7 @@ only-include = ["scholar_auth"]
 
 [tool.black]
 line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
