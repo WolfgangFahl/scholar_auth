@@ -1,0 +1,61 @@
+# see https://flit.pypa.io/en/latest/pyproject_toml.html
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scholar_auth"
+description = "ORCID based OAuth login and authorization for scholarly applications - reusable across multiple systems and independent of the web framework"
+keywords = [ "ORCID", "OAuth", "login", "authorization", "scholar"]
+authors = [
+  {name = "Wolfgang Fahl", email = "wf@WolfgangFahl.com"}
+]
+maintainers = [
+  { name = "Wolfgang Fahl", email = "wf@WolfgangFahl.com" },
+]
+readme = "README.md"
+license = {text = "Apache-2.0"}
+
+dependencies = [
+	# https://pypi.org/project/pybasemkit/
+	# https://github.com/WolfgangFahl/pybasemkit
+	# Python base module kit: YAML/JSON I/O, structured logging, CLI tooling, shell execution, and remote pydevd debug support.
+	"pybasemkit>=0.1.6",
+]
+
+requires-python = ">=3.10"
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License"
+    ]
+dynamic = ["version"]
+[tool.hatch.version]
+path = "scholar_auth/__init__.py"
+
+[project.urls]
+Home = "https://github.com/WolfgangFahl/scholar_auth"
+Documentation = "https://wiki.bitplan.com/index.php/scholar_auth"
+Source = "https://github.com/WolfgangFahl/scholar_auth"
+
+[project.optional-dependencies]
+test = [
+  "green",
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["scholar_auth"]
+
+[tool.hatch.build.targets.wheel.sources]
+"scholar_auth" = "scholar_auth"
+
+[tool.black]
+line-length = 120
