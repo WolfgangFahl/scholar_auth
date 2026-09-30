@@ -21,6 +21,9 @@ dependencies = [
 	# https://github.com/WolfgangFahl/pybasemkit
 	# Python base module kit: YAML/JSON I/O, structured logging, CLI tooling, shell execution, and remote pydevd debug support.
 	"pybasemkit>=0.1.6",
+	# https://pypi.org/project/requests/
+	# token request at the ORCID OAuth endpoint
+	"requests",
 ]
 
 requires-python = ">=3.10"
